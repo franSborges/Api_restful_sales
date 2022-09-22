@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import express, {Response, Request, NextFunction } from 'express';
 import cors from 'cors';
 import routes from './routes';
 import AppError from './../errors/AppError';
+import './../typeorm';
 
 const app = express();
 
@@ -10,7 +12,6 @@ app.use(express.json());
 
 app.use(routes);
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 
       if(error instanceof AppError) {
