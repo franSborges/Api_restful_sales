@@ -1,32 +1,33 @@
-import Product from "@modules/users/typeorm/entities/User";
+import User from "@modules/users/typeorm/entities/User";
 import { UserRepository } from "@modules/users/typeorm/repositories/UsersRepository";
 import AppError from "@shared/errors/AppError";
+import { compare } from "bcryptjs";
 import { getCustomRepository } from "typeorm";
 
 interface IRequest {
-  name: string;
   email: string;
   password: string;
 }
 
-class CreateUserService {
-  public async execute({ name, email, password}: IRequest): Promise<Product> {
+// interface IResponse {
+//   user: User
+// }
+
+class CreateSessionsService {
+  public async execute({ email, password}: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UserRepository);
-    const userEmailExists = await usersRepository.findByEmail(email);
+    const user = await usersRepository.findByEmail(email);
 
 
-    if (userEmailExists) throw new AppError('There is already one product with this name');
+    if (!user) throw new AppError('Incorrect email/password combination', 401);
 
-    const user = usersRepository.create({
-      name,
-      email,
-      password
-    });
+    const passwordConfirmed = await compare(password, user.password);
 
-    await usersRepository.save(user);
+    if (!passwordConfirmed) throw new AppError('Incorrect email/password combination', 401);
 
     return user;
+   
   }
 }
 
-export default CreateUserService;
+export default CreateSessionsService;
