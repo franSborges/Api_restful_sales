@@ -1,4 +1,4 @@
-import Product from "@modules/users/typeorm/entities/User";
+import User from "@modules/users/typeorm/entities/User";
 import { UserRepository } from "@modules/users/typeorm/repositories/UsersRepository";
 import AppError from "@shared/errors/AppError";
 import { hash } from "bcryptjs";
@@ -11,7 +11,7 @@ interface IRequest {
 }
 
 class CreateUserService {
-  public async execute({ name, email, password}: IRequest): Promise<Product> {
+  public async execute({ name, email, password}: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UserRepository);
     const userEmailExists = await usersRepository.findByEmail(email);
 
