@@ -1,5 +1,5 @@
 import User from "@modules/users/typeorm/entities/User";
-import { UserRepository } from "@modules/users/typeorm/repositories/UsersRepository";
+import { UserRepository } from "@modules/users/typeorm/repositories/UserRepository";
 import { getCustomRepository } from "typeorm";
 
 
