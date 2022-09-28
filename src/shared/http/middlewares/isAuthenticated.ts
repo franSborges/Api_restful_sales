@@ -3,13 +3,11 @@ import { verify } from "jsonwebtoken";
 import { NextFunction, Request, Response } from "express";
 import authConfig from "@config/auth";
 
-
 interface TokenPayload {
   iat: number;
   exp: number;
   sub: string;
 }
-
 
 export default function isAuthenticated(
   req: Request, res: Response, next: NextFunction
