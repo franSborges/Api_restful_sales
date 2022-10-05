@@ -2,8 +2,7 @@ import EtherealMail from "@config/mail/EtherealMail";
 import { UserRepository } from "@modules/users/typeorm/repositories/UserRepository";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
-import UsersTokenRepository from "../typeorm/repositories/UserTokenRepository"
-
+import UsersTokenRepository from "../typeorm/repositories/UserTokenRepository";
 
 interface IRequest {
   email: string;
