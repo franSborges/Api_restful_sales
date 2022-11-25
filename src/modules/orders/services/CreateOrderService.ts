@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import CustomersRepository from '@modules/customers/typeorm/repositories/CustomersRepository';
+import { ProductRepository } from '@modules/products/typeorm/repositories/ProductsRepository';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Order from '../typeorm/entities/Order';
 import OrdersRepository from '../typeorm/repositories/OrdersRepository';
-import CustomersRepository from '../../customers/typeorm/repositories/CustomersRepository';
-import { ProductRepository } from '@modules/products/typeorm/repositories/ProductsRepository';
 
 interface IProduct {
   id: string;
@@ -73,9 +72,9 @@ class CreateOrderService {
     const { order_products } = order;
 
     const updatedProductQuantity = order_products.map(product => ({
-      id: product.product.id,
+      id: product.product_id,
       quantity:
-        existsProducts.filter(p => p.id === product.id)[0].quantity -
+        existsProducts.filter(p => p.id === product.product_id)[0].quantity -
         product.quantity,
     }));
 
@@ -84,6 +83,5 @@ class CreateOrderService {
     return order;
   }
 }
-
 
 export default CreateOrderService;
