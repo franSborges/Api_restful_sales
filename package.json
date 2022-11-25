@@ -13,7 +13,6 @@
     "push": "git push origin master",
     "create-migration": "yarn typeorm migration:create -n CreateCustomers",
     "run-migration": "yarn typeorm migration:run"
-
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -48,6 +47,7 @@
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.2.29",
+    "typeorm-pagination": "^2.0.3",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.13"
   }
