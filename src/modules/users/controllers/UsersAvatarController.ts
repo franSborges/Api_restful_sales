@@ -13,4 +13,4 @@ export default class UserAvatarController {
     return res.json(user);
   }
 }
- 41  
+ 

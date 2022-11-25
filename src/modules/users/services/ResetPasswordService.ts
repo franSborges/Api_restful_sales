@@ -8,7 +8,7 @@ import UserTokenRepository from "../typeorm/repositories/UserTokenRepository";
 interface IRequest {
   token: string;
   password: string;
-}
+}                                                                                                                
 
 class ResetPasswordService {
   public async execute({ token, password }: IRequest): Promise<void> {
