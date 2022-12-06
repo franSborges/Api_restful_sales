@@ -12,8 +12,8 @@
     "add-file": "git add .",
     "push": "git push origin master",
     "create-migration": "yarn typeorm migration:create -n CreateCustomers",
-    "run-migration": "yarn typeorm migration:run"
-
+    "run-migration": "yarn typeorm migration:run",
+    "start": "node ./src/shared/http/server.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -37,8 +37,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
+    "class-transformer": "^0.3.1",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.7",
@@ -48,6 +50,7 @@
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "0.2.29",
+    "typeorm-pagination": "^2.0.3",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.13"
   }
